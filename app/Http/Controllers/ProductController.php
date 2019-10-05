@@ -27,7 +27,7 @@ class ProductController extends Controller
         $productKey = 'product_' . $id;
 
 
-        if (Session::has($productKey)) {
+        if (!Session::has($productKey)) {
             $this->product->where('id', $id)->increment('view_count');
             Session($productKey, 1);
         }
